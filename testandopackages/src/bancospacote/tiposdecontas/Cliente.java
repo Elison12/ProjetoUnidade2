@@ -14,6 +14,8 @@
 */
 package bancospacote.tiposdecontas;
 
+import java.util.List;
+
 
 // import bancospacote.*;
 
@@ -22,6 +24,7 @@ public final class Cliente extends Agencia {
     public String nome;
     public String cpf;
     public Conta conta;
+    public List<Conta> contas;
 
     public Cliente(String nome, String cpf) {
         this.nome = nome;
