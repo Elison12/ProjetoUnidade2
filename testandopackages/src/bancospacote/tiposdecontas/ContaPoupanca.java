@@ -13,7 +13,7 @@ public class ContaPoupanca extends Conta implements Operacoes {
         this.saldo = saldo - valordesaque;
     }
 
-    //implementado da interface "Operações.java"
+    //implementado da interface "Operacoes.java"
     @Override
     public void depositar(float valordeposito) {
         this.saldo = saldo + valordeposito;

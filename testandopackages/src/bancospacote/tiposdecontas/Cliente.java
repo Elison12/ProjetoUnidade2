@@ -14,63 +14,66 @@
 */
 package bancospacote.tiposdecontas;
 
-import java.util.List;
-
-
 // import bancospacote.*;
 
 public final class Cliente extends Agencia {
     
     public String nome;
     public String cpf;
-    public Conta conta;
-    public List<Conta> contas;
+    // public Conta conta;
+    // public List<Conta> contas;
+    public Conta[] contas;
 
     public Cliente(String nome, String cpf) {
         this.nome = nome;
-        this.cpf = cpf;
+        this.cpf = cpf;  
+        this.contas = new Conta[3];      
     }
 
     public void addConta(String nomeconta) {
         if (nomeconta == "conta corrente") {
-            this.conta = new ContaCorrente();
-            
+            this.contas[0] = new ContaCorrente();           
         } else if (nomeconta == "conta poupanca") {
-            this.conta = new ContaPoupanca();
+            // this.conta = new ContaPoupanca();
+            this.contas[1] = new ContaPoupanca();           
         } else {
-            this.conta = new ContaSalario();
+            // this.conta = new ContaSalario();
+            // contas.add(new ContaSalario());
+            this.contas[2] = new ContaSalario();           
+
         }
     }
 
-    public void depositar(float valordeposito) {
-        conta.saldo += valordeposito;
-        System.out.println("deposito efetuado com sucesso!");
-    }
+    // public void depositar(float valordeposito) {
+    //     conta.saldo += valordeposito;
+    //     System.out.println("deposito efetuado com sucesso!");
+    // }
 
-    public void transferencia(Cliente clientedestino, float valortransferencia) {
+    // public void transferencia(Cliente clientedestino, float valortransferencia) {
 
-        clientedestino.conta.setSaldo(valortransferencia + clientedestino.conta.saldo);
-        conta.setSaldo(conta.saldo - valortransferencia);
+    //     clientedestino.conta.setSaldo(valortransferencia + clientedestino.conta.saldo);
+    //     conta.setSaldo(conta.saldo - valortransferencia);
         
-        System.out.println("saldo atual destino: "+ clientedestino.conta.getSaldo());
-        System.out.println("meu saldo atual: " + conta.getSaldo());
-    }
+    //     System.out.println("saldo atual destino: "+ clientedestino.conta.getSaldo());
+    //     System.out.println("meu saldo atual: " + conta.getSaldo());
+    // }
 
     // cadastrar pix 
-    public void cadastrarPix(Cliente inCliente) {
-        System.out.println("Olá, para cadastar sua chavePix escolha as opções\n");
-        System.out.println("1 para cpf\n" +
-            "2 para email\n" +
-            "3 para telefone\n" +
-            "4 para gerar chave aleatoria"
-        );
+    // public void cadastrarPix(Cliente inCliente) {
+    //     System.out.println("Olá, para cadastar sua chavePix escolha as opções\n");
+    //     System.out.println("1 para cpf\n" +
+    //         "2 para email\n" +
+    //         "3 para telefone\n" +
+    //         "4 para gerar chave aleatoria"
+    //     );
 
-        if (inCliente.conta instanceof ContaCorrente) {
-            ((inCliente.conta).pix) = "assombrado";
-        } else if(inCliente.conta instanceof ContaPoupanca) {
-            ((inCliente.conta).pix) = "açucar";
-        } else {
-            ((inCliente.conta).pix) = "biscoito";
-        }
-    }
+    //     if (inCliente.conta instanceof ContaCorrente) {
+    //         ((inCliente.conta).pix) = "assombrado";
+    //     } else if(inCliente.conta instanceof ContaPoupanca) {
+    //         ((inCliente.conta).pix) = "açucar";
+    //     } else {
+    //         ((inCliente.conta).pix) = "biscoito";
+    //     }
+    // }
+
 }
