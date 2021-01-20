@@ -2,7 +2,7 @@ package bancospacote.tiposdecontas;
 
 public class ContaSalario extends Conta {
 
-    public ContaSalario(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
+    public ContaSalario(Cliente cliente, float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo, agencia);
 
     }
@@ -11,3 +11,4 @@ public class ContaSalario extends Conta {
         setSaldo(saldo+valor);
     }
 }
+
