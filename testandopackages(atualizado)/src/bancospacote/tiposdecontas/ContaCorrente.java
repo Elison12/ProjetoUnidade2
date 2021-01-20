@@ -13,7 +13,7 @@ package bancospacote.tiposdecontas;
 
 public class ContaCorrente extends Conta implements Operacoes {
 
-    public ContaCorrente(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
+    public ContaCorrente(Cliente cliente, float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo, agencia);
 
     }
@@ -45,3 +45,4 @@ public class ContaCorrente extends Conta implements Operacoes {
     }
 
 }
+
