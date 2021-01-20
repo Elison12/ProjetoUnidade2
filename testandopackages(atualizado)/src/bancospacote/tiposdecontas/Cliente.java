@@ -42,10 +42,10 @@ public final class Cliente {
                     
                 
             } */
-   public void addConta(String tipo,String cliente,float saldo, String pix, String codigo, Agencia agencia){
-        boolean temConta = checarConta(cliente, agencia);
+   public void addConta(String tipo,float saldo, String pix, String codigo, Agencia agencia){
+        boolean temConta = checarConta(agencia);
         if(!temConta){
-            this.addContaComplemento(tipo,cliente, saldo, pix, codigo, agencia);
+            this.addContaComplemento(tipo,this, saldo, pix, codigo, agencia);
             System.out.println("Conta criada com sucesso");
         }else{
             
@@ -60,20 +60,20 @@ public final class Cliente {
         }
    }
    
-   public boolean checarConta(String cliente, Agencia agencia){
+   public boolean checarConta(Agencia agencia){
        boolean temConta = false;
        for(int i=0; i<agencia.contas.size(); i++){
-            String cliente_conta = agencia.contas.get(i).cliente;
-            if(cliente_conta.equals(cliente)){
+            Cliente cliente_conta = agencia.contas.get(i).cliente;
+            if(cliente_conta.equals(this)){
                 temConta = true;
                 }
        }
        return(temConta);
    }
                            
-   public void addContaComplemento(String tipo,String cliente,float saldo, String pix, String codigo, Agencia agencia){
+   public void addContaComplemento(String tipo,Cliente cliente,float saldo, String pix, String codigo, Agencia agencia){
         if ("conta corrente".equals(tipo)) {
-                 this.contas[0] = new ContaCorrente(cliente,saldo, pix, codigo, agencia);   
+                 this.contas[0] = new ContaCorrente(cliente ,saldo, pix, codigo, agencia);   
                  agencia.addConta(this.contas[0], agencia);
             } else if ("conta poupanca".equals(tipo)) {
               
