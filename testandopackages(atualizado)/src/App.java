@@ -42,12 +42,12 @@ public class App {
         
         // adiciona conta 
         
-        elison.addConta("conta corrente","elison",1000f, "elison@kalil.com", "01.1", pontobanese);
-        gabriel.addConta("conta corrente","gabriel",1200f, "gabriel@gmail.com", "01.2", pontobanese);
-        igor.addConta("conta poupanca","igor",1200f, "igor@gmail.com", "01.3", pontobanese);
-        ruesley.addConta("outra conta","ruesley", 1300f, "ruesley@xinaider.com", "01.4", pontobanese);
-        elison.addConta("conta corrente","elison", 1500f, "7991045564", "02.1", pontobanese2);
-        elison.addConta("conta corrente","elison", 200f, "7991045564", "02.1", pontobanese2);
+        elison.addConta("conta corrente",1000f, "elison@kalil.com", "01.1", pontobanese);
+        gabriel.addConta("conta corrente",1200f, "gabriel@gmail.com", "01.2", pontobanese);
+        igor.addConta("conta poupanca",1200f, "igor@gmail.com", "01.3", pontobanese);
+        ruesley.addConta("outra conta",1300f, "ruesley@xinaider.com", "01.4", pontobanese);
+        elison.addConta("conta corrente",1500f, "7991045564", "02.1", pontobanese2);
+        elison.addConta("conta corrente",200f, "7991045564", "02.1", pontobanese2);
         
         
         
