@@ -13,17 +13,18 @@
 
 package bancospacote.tiposdecontas;
 
-import bancoCentral.BancoCentral;
 
 
-public abstract class Conta extends BancoCentral {
+
+public abstract class Conta  {
     
-    public String cliente;
+    public Cliente cliente;
     public float saldo;
     public String pix;
     public Agencia agencia;
+    public String codigo;
     
-    public Conta(String cliente, float saldo, String pix, String codigo,Agencia agencia ) {
+    public Conta(Cliente cliente, float saldo, String pix, String codigo,Agencia agencia ) {
         this.saldo = saldo;
         this.pix = pix;
         this.codigo = codigo;
@@ -50,3 +51,4 @@ public abstract class Conta extends BancoCentral {
         this.saldo = saldo;
     }
 }
+
