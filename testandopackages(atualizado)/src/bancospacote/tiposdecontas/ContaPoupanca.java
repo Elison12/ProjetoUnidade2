@@ -1,10 +1,12 @@
+
+
 package bancospacote.tiposdecontas;
 
 // import bancospacote.*
 
 public class ContaPoupanca extends Conta implements Operacoes {
 
-    public ContaPoupanca(String cliente,float saldo, String pix, String codigo, Agencia agencia) {
+    public ContaPoupanca(Cliente cliente,float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo, agencia);
 
     }
