@@ -1,0 +1,34 @@
+/*
+    - Gerencia de tudo é aqui
+*/
+import bancospacote.Banco;
+import bancospacote.tiposdecontas.Agencia;
+import bancospacote.tiposdecontas.Cliente;
+
+public class App {
+    public static void main(String[] args) {
+        //cria banco, dizendo nome codigo
+        Banco banese = new Banco("banese","2");
+        
+        //cria agencia, dizendo  nome , codigo e banco pertencente
+        Agencia pontobanese = new Agencia("pontobanese", "11.2", banese);
+        Agencia pontobanese2 = new Agencia("pontobanese2","12.2", banese);
+        
+        //cria cliente, dizendo um nome e cpf.
+        Cliente elison = new Cliente("Elison", "835.345.23");    
+        //cria cliente, dizendo um nome e cpf..
+        Cliente igor = new Cliente("igor", "453.34.232");
+        Cliente ruesley = new Cliente("ruesley", "020.225.011-18");
+        Cliente gabriel = new Cliente("gabriel", "029.11.234-00");
+        
+        // adiciona conta  
+        elison.addConta("conta corrente","elison",1000f, "elison@kalil.com", "01.1", pontobanese);
+        gabriel.addConta("conta corrente","gabriel",1200f, "gabriel@gmail.com", "01.2", pontobanese);
+        igor.addConta("conta poupanca","igor",1200f, "igor@gmail.com", "01.3", pontobanese);
+        ruesley.addConta("outra conta","ruesley", 1300f, "ruesley@xinaider.com", "01.4", pontobanese);
+        elison.addConta("conta corrente","elison", 1500f, "7991045564", "02.1", pontobanese2);
+        elison.addConta("conta corrente","elison", 200f, "7991045564", "02.1", pontobanese2);
+                
+        System.out.println("END");
+    }
+}
