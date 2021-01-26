@@ -9,15 +9,12 @@
 */
 package bancospacote.tiposdecontas;
 
-// import bancospacote.*;
 
 public class ContaCorrente extends Conta implements Operacoes {
 
     public ContaCorrente(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
-        super(cliente, saldo, pix, codigo, agencia);
-
+        super(cliente, saldo, pix, codigo);
     }
-
     
     public void transferenciaPIX() {
 
@@ -35,13 +32,7 @@ public class ContaCorrente extends Conta implements Operacoes {
     }
 
     @Override
-    public float getSaldo() {
+    public float verSaldo() {
         return saldo;
     }
-
-    @Override
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
-    }
-
 }

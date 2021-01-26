@@ -10,25 +10,21 @@
 - Organizar essas funções em uma interface dps
 
 */
-
 package bancospacote.tiposdecontas;
 
-
-public abstract class Conta  {
+public class Conta {
 
     public String cliente;
-    public float saldo;
+    protected float saldo;
     public String pix;
-    public Agencia agencia;
+    // public Agencia agencia;
     public String codigo;
 
-    public Conta(String cliente, float saldo, String pix, String codigo,Agencia agencia ) {
+    public Conta(String cliente, float saldo, String pix, String codigo) {
         this.saldo = saldo;
         this.pix = pix;
         this.codigo = codigo;
-        this.agencia = agencia;
         this.cliente = cliente;
-
     }
 
     public void sacar(float valordesaque) {
@@ -36,6 +32,7 @@ public abstract class Conta  {
     }
 
     public void depositar(float valordeposito) {
+        System.out.println("depositou");
         this.saldo = saldo + valordeposito;
     }
 
@@ -46,5 +43,6 @@ public abstract class Conta  {
     public void setSaldo(float saldo) {
         this.saldo = saldo;
     }
+
 
 }

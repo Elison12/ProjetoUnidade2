@@ -29,5 +29,4 @@ public class Agencia  {
     public void addNewAgencia(Agencia novAgencia, Banco mybanco) {
         mybanco.agencias.add(novAgencia);
     }
-
 }

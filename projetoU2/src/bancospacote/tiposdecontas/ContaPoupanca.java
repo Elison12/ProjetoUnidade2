@@ -5,20 +5,10 @@ package bancospacote.tiposdecontas;
 public class ContaPoupanca extends Conta implements Operacoes {
 
     public ContaPoupanca(String cliente,float saldo, String pix, String codigo, Agencia agencia) {
-        super(cliente, saldo, pix, codigo, agencia);
-
+        super(cliente, saldo, pix, codigo);
     }
-
-   
-
-    
-    
-
-    
-         
-    public void transferenciaPIX() {
-
-    }
+ 
+    public void transferenciaPIX() {}
 
     @Override
     public void sacar(float valordesaque) {
@@ -28,16 +18,12 @@ public class ContaPoupanca extends Conta implements Operacoes {
     //implementado da interface "Operacoes.java"
     @Override
     public void depositar(float valordeposito) {
+        System.out.println("Depositou");
         this.saldo = saldo + valordeposito;
     }
 
     @Override
-    public float getSaldo() {
+    public float verSaldo() {
         return saldo;
-    }
-
-    @Override
-    public void setSaldo(float saldo) {
-        this.saldo = saldo;
     }
 }

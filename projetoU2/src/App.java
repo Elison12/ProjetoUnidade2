@@ -5,6 +5,7 @@ import bancospacote.Banco;
 import bancospacote.tiposdecontas.Agencia;
 import bancospacote.tiposdecontas.Cliente;
 
+
 public class App {
     public static void main(String[] args) {
         //cria banco, dizendo nome codigo
@@ -26,6 +27,11 @@ public class App {
         gabriel.addConta("conta corrente","gabriel",1200f, "gabriel@gmail.com", "01.2", pontobanese);
         igor.addConta("conta poupanca","igor",1200f, "igor@gmail.com", "01.3", pontobanese);
         ruesley.addConta("outra conta","ruesley", 1300f, "ruesley@xinaider.com", "01.4", pontobanese);
+
+        elison.fazerDeposito(400f, igor, pontobanese, "01.3");
+        elison.fazerSaque(100f, "elison", pontobanese, "01.1");
+
+
         elison.addConta("conta corrente","elison", 1500f, "7991045564", "02.1", pontobanese2);
         elison.addConta("conta corrente","elison", 200f, "7991045564", "02.1", pontobanese2);
                 
