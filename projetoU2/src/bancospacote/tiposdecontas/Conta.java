@@ -12,6 +12,8 @@
 */
 package bancospacote.tiposdecontas;
 
+import java.util.ArrayList;
+
 public class Conta {
 
     public String cliente;
@@ -19,12 +21,15 @@ public class Conta {
     public String pix;
     // public Agencia agencia;
     public String codigo;
+    public ArrayList<String> extrato;
+ 
 
     public Conta(String cliente, float saldo, String pix, String codigo) {
         this.saldo = saldo;
         this.pix = pix;
         this.codigo = codigo;
         this.cliente = cliente;
+        extrato = new ArrayList<>();
     }
 
     public void sacar(float valordesaque) {
@@ -44,5 +49,9 @@ public class Conta {
         this.saldo = saldo;
     }
 
-
+    public void transferir(float valor, Conta minhaConta, Conta contaDestino) {
+        float destino = contaDestino.getSaldo();
+        contaDestino.setSaldo(destino+valor);
+        minhaConta.saldo = saldo - valor;
+    }
 }

@@ -1,11 +1,14 @@
 package bancospacote.tiposdecontas;
 
+import java.util.ArrayList;
+
 // import bancospacote.*
 
 public class ContaPoupanca extends Conta implements Operacoes {
 
     public ContaPoupanca(String cliente,float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo);
+        extrato = new ArrayList<>();
     }
  
     public void transferenciaPIX() {}
@@ -25,5 +28,12 @@ public class ContaPoupanca extends Conta implements Operacoes {
     @Override
     public float verSaldo() {
         return saldo;
+    }
+
+    @Override
+    public void transferir(float valor, Conta minhaConta, Conta contaDestino) {
+        float destino = contaDestino.getSaldo();
+        contaDestino.setSaldo(destino+valor);
+        minhaConta.saldo = saldo - valor;
     }
 }

@@ -9,11 +9,13 @@
 */
 package bancospacote.tiposdecontas;
 
+import java.util.ArrayList;
 
 public class ContaCorrente extends Conta implements Operacoes {
 
     public ContaCorrente(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo);
+        extrato = new ArrayList<>();
     }
     
     public void transferenciaPIX() {
@@ -24,7 +26,6 @@ public class ContaCorrente extends Conta implements Operacoes {
     public void sacar(float valordesaque) {
         this.saldo = saldo - valordesaque;
     }
-
     //implementado da interface "Operações.java"
     @Override
     public void depositar(float valordeposito) {
@@ -35,4 +36,12 @@ public class ContaCorrente extends Conta implements Operacoes {
     public float verSaldo() {
         return saldo;
     }
+
+    @Override
+    public void transferir(float valor, Conta minhaConta, Conta contaDestino) {
+        float destino = contaDestino.getSaldo();
+        contaDestino.setSaldo(destino+valor);
+        minhaConta.saldo = saldo - valor;
+    }
+
 }

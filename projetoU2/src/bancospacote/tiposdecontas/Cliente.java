@@ -11,12 +11,15 @@
 package bancospacote.tiposdecontas;
 
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public final class Cliente {
     
     public String nome;
     public String cpf;
     public ArrayList<Conta> minhasContas;
+    private Date data = new Date();
    
    public Cliente(String nome, String cpf) {
         this.nome = nome;
@@ -34,7 +37,7 @@ public final class Cliente {
         }
    }
    
-   public boolean checarConta(String cliente, Agencia agencia, String numeroConta){
+   private boolean checarConta(String cliente, Agencia agencia, String numeroConta){
         boolean temConta = false;
         for(int i=0; i<agencia.contas.size(); i++){
             String cliente_conta = agencia.contas.get(i).cliente;
@@ -46,7 +49,7 @@ public final class Cliente {
     }
 
     // varre as lista de contas da agencia buscando pelo numero da conta similar e retorna ele
-    public Conta retornaConta(String numeroConta, Agencia essaAgencia) {
+    private Conta retornaConta(String numeroConta, Agencia essaAgencia) {
 
         for (int i = 0; i < essaAgencia.contas.size(); i++) {
             String atual = essaAgencia.contas.get(i).codigo;
@@ -56,24 +59,8 @@ public final class Cliente {
         }
         return null;
     }
-
-    public void addContaComplementoT(String tipo,String cliente, float saldo,
-                 String pix, String codigo, Agencia agencia) {
-        if ("conta corrente".equals(tipo)) {
-            minhasContas.add(new ContaCorrente(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaCorrente(cliente, saldo, pix, codigo, agencia));
-        } else if ("conta poupanca".equals(tipo)) {
-            minhasContas.add(new ContaPoupanca(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaPoupanca(cliente, saldo, pix, codigo, agencia));
-        } else {
-            minhasContas.add(new ContaSalario(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaSalario(cliente, saldo, pix, codigo, agencia));
-        }
-    }
-
-
-                
-   public void addContaComplemento(String tipo, String cliente, float saldo,
+               
+   private void addContaComplemento(String tipo, String cliente, float saldo,
                 String pix, String codigo, Agencia agencia) {
         if ("conta corrente".equals(tipo)) {
             minhasContas.add(new ContaCorrente(cliente, saldo, pix, codigo, agencia));
@@ -92,7 +79,8 @@ public final class Cliente {
         Conta verificarExistencia = retornaConta(numeroConta, agenciaDestino);
         if (verificarExistencia != null) {
             verificarExistencia.depositar(valor);
-            clienteTitular.depositoLocal(valor, numeroConta);
+            clienteTitular.depositoLocal(valor, numeroConta, this);
+            verificarExistencia.extrato.add("deposito efetuado em: " +data+  " | " +valor+ " R$");
             System.out.println("deposito efetuado com sucesso");
         } else {
             System.out.println("deposito não foi efetuado");
@@ -107,18 +95,44 @@ public final class Cliente {
         } else {
             Conta pegarConta = retornaConta(numeroConta, agenciaDestino);
             pegarConta.sacar(valor);
-            saqueAtualização(valor, numeroConta);
+            pegarConta.extrato.add("saque efetuado" + " | " +data+ " | " +valor+ " R$");
+            saqueAtualização(valor, numeroConta, this);
             System.out.println("saque efetuado com sucesso!");
         }
     }
 
-    //os próximo metados atualizam os valores locais do cliente. Por algum motivo eles não atualizavam sozinhos
-    public void depositoLocal(float valor, String numeroConta) {
-        Conta minhaConta = retornaContaLocal(numeroConta);
+    public void fazerTransferencia(float valor, String banese, Agencia minhaAgencia,
+             String minhaConta, Cliente clienteDestino,
+                 String numeroDaConta, String bancoDestino, Agencia agenciaDestino) {
+        Conta verificarEmissor = retornaConta(minhaConta, minhaAgencia);
+        Conta verificarReceptor = retornaConta(numeroDaConta, agenciaDestino);
+        if (verificarEmissor != null && verificarReceptor != null) {
+            if (verificarEmissor.saldo >= valor) {
+                verificarEmissor.transferir(valor, verificarEmissor, verificarReceptor);
+                transferenciaAtualizaçãoEmissor(valor, minhaConta, this);
+                verificarEmissor.extrato.add("transferencia efetuada em: " +data+ " | conta destino: "
+                +clienteDestino.nome+ " " +numeroDaConta+ " | " +valor+ " R$");
+                verificarReceptor.extrato.add("transferencia efetuada em: " +data+ " | " + verificarEmissor.codigo 
+                  +  " | " +valor+ " R$");
+                System.out.println("Transferencia efetuada com sucesso");
+                // transferenciaReceptor(valor, numeroDaConta, clienteDestino);
+                clienteDestino.transferenciaAtualizaçãoReceptor(valor, clienteDestino, numeroDaConta);
+            } else {
+                System.out.println("transferecia negada, saldo insulficiente");
+            }
+        } else {
+            System.out.println("Transferencia negada");
+        }
+    }
+
+    // os próximo metados atualizam os valores locais do cliente. Por algum motivo
+    // eles não atualizavam sozinhos
+    private void depositoLocal(float valor, String numeroConta, Cliente cliente) {
+        Conta minhaConta = retornaContaLocal(numeroConta, cliente);
         minhaConta.depositar(valor);
     }
 
-    public Conta retornaContaLocal(String numeroConta) {
+    private Conta retornaContaLocal(String numeroConta, Cliente cliente) {
 
         for (int i = 0; i < minhasContas.size(); i++) {
             String atual = minhasContas.get(i).codigo;
@@ -129,8 +143,23 @@ public final class Cliente {
         return null;
     }
 
-    public void saqueAtualização(float valor, String numeroConta) {
-        Conta minhaConta = retornaContaLocal(numeroConta);
+    private void saqueAtualização(float valor, String numeroConta, Cliente cliente) {
+        Conta minhaConta = retornaContaLocal(numeroConta, cliente);
+        minhaConta.extrato.add("saque efetuado" + " | " +data+ " | " +valor+ " R$");
         minhaConta.sacar(valor);
+    }
+
+    private void transferenciaAtualizaçãoEmissor(float valor, String numeroConta, Cliente emissor) {
+        Conta minhaConta = retornaContaLocal(numeroConta, emissor);
+        minhaConta.extrato.add("transferencia efetuada em: " +data+ " | conta destino: "
+        +emissor.nome+ " " +numeroConta+ " | " +valor+ " R$");
+        minhaConta.saldo = minhaConta.saldo - valor;
+    }
+
+    private void transferenciaAtualizaçãoReceptor(float valor, Cliente clienteDestino, String codigoConta) {
+        Conta contaReceptor = clienteDestino.retornaContaLocal(codigoConta, clienteDestino);
+        contaReceptor.extrato.add("transferencia efetuada em: " +data+ " | " + contaReceptor.codigo 
+        +  " | " +valor+ " R$");
+        contaReceptor.setSaldo(contaReceptor.saldo + valor);
     }
 }
