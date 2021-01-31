@@ -22,3 +22,5 @@ The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More detail
 6 - habilitar as tranferencias entre contas (C)
 7 - gravar em emissor e receptor (C)
 8 - mudar o Array extrato para a classe Conta (C)
+9 - implementar o pix 
+10 - criar 

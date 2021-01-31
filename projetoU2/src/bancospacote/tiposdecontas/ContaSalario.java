@@ -7,6 +7,7 @@ public class ContaSalario extends Conta {
     public ContaSalario(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo);
         extrato = new ArrayList<>();
+        listaDepix = new ArrayList<>();
     }
 
     public void depisitarEmpregador(float valor) {

@@ -37,10 +37,17 @@ public class App {
 
         elison.fazerTransferencia(450.f, "2", pontobanese, "01.1", gabriel, "01.2", "2", pontobanese);
 
+        elison.gerarChavePix(pontobanese, "01.1");
+
+        // elison.gerarChavePix(pontobanese, "01.1", bc);
+
         // elison.addConta("conta corrente","elison", 1500f, "7991045564", "02.1", pontobanese2);
         // elison.addConta("conta corrente","elison", 200f, "7991045564", "02.1", pontobanese2);
                 
         System.out.println("END");
 
+
+        Cliente patty = new Cliente("patty", "346.235");
+        patty.addConta("conta poupança", "patty", 350f, "@patty", "01.6", pontobanese);
     }
 }
