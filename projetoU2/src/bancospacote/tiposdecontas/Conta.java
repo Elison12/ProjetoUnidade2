@@ -19,9 +19,9 @@ public class Conta {
     public String cliente;
     protected float saldo;
     public String pix;
-    // public Agencia agencia;
     public String codigo;
     public ArrayList<String> extrato;
+    public ArrayList<String> listaDepix;
  
 
     public Conta(String cliente, float saldo, String pix, String codigo) {
@@ -30,6 +30,7 @@ public class Conta {
         this.codigo = codigo;
         this.cliente = cliente;
         extrato = new ArrayList<>();
+        listaDepix = new ArrayList<>();
     }
 
     public void sacar(float valordesaque) {

@@ -13,6 +13,7 @@ public class Banco {
     public String codigo;
     public String nome;
     public ArrayList<Agencia> agencias;
+    // public ArrayList<Agencia> agencias;
 
     public Banco(String nome, String codigo) {
         this.nome = nome;
@@ -21,6 +22,6 @@ public class Banco {
         this.agencias = agencias_lista;
     }
 
-    public void exibirMontante(){}
+    public void exibirMontante() {}
     
 }

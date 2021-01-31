@@ -2,13 +2,13 @@ package bancospacote.tiposdecontas;
 
 import java.util.ArrayList;
 
-// import bancospacote.*
 
 public class ContaPoupanca extends Conta implements Operacoes {
 
     public ContaPoupanca(String cliente,float saldo, String pix, String codigo, Agencia agencia) {
         super(cliente, saldo, pix, codigo);
         extrato = new ArrayList<>();
+        listaDepix = new ArrayList<>();
     }
  
     public void transferenciaPIX() {}

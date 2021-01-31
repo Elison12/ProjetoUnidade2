@@ -13,31 +13,20 @@ package bancoCentral;
 
 public abstract class BancoCentral {
     
-    // protected String Pix;
-
-    // private List<classe> listaDePix;
-
-    // listaDePix = new ArrayList<>();
-    
- 
     public String codigo;
     public float saldo; 
     public String nome;
     
-    // exibirMontante()
-    
-    public String pix;
-    
-    public void cadastrarPix(){
+    public void cadastrarPix() {
         
     }
     
-    public void mostrarDadosPix(){
+    public void mostrarDadosPix() {
         // não pode ter a mesma chave em varios bancos: email, chave automatica, ... . 
         // transferencia via pix vc passa a chave e ela identifica quem vai receber e mostra os dados
     }
     
-    public void exibirMontante(){
+    public void exibirMontante() {
         
     }
 }
