@@ -1,8 +1,3 @@
-/*
-
-- Essa daqui herda de banco central, por enquanto vazia
-
-*/
 package bancospacote;
 
 import bancospacote.tiposdecontas.Agencia;

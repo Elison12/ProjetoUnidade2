@@ -66,14 +66,15 @@ public final class Cliente {
    private void addContaComplemento(String tipo, String cliente, float saldo,
                 String pix, String codigo, Agencia agencia) {
         if ("conta corrente".equals(tipo)) {
-            minhasContas.add(new ContaCorrente(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaCorrente(cliente, saldo, pix, codigo, agencia));
+            minhasContas.add(new ContaCorrente(cliente, saldo, codigo, agencia));
+            agencia.contas.add(new ContaCorrente(cliente, saldo, codigo, agencia));
         } else if ("conta poupanca".equals(tipo)) {
-            minhasContas.add(new ContaPoupanca(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaPoupanca(cliente, saldo, pix, codigo, agencia));
+            minhasContas.add(new ContaPoupanca(cliente, saldo, codigo, agencia));
+            agencia.contas.add(new ContaPoupanca(cliente, saldo, codigo, agencia));
         } else {
-            minhasContas.add(new ContaSalario(cliente, saldo, pix, codigo, agencia));
-            agencia.contas.add(new ContaSalario(cliente, saldo, pix, codigo, agencia));
+            minhasContas.add(new ContaSalario(cliente, saldo, codigo, agencia));
+            agencia.contas.add(new ContaSalario(cliente, saldo,
+             codigo, agencia));
         }
     }
 
@@ -178,24 +179,25 @@ public final class Cliente {
                   "- para ser uma chave aleatória digite 4"
             );
             Scanner ler = new Scanner(System.in); int escolha = ler.nextInt();
+            Scanner leitura = new Scanner(System.in); String entrada = leitura.nextLine();
 
             if (escolha == 1) {
                 System.out.println("Digite seu email:\n");
-                String chaveEMAIL = ler.nextLine();
-                pegarConta.listaDepix.add(chaveEMAIL);
+                pegarConta.listaDepix.add(entrada);
+                System.out.println("Sua chave foi cadastrada:\n");     
             } else if (escolha == 2) {
-                pegarConta.listaDepix.add(cpf);
-                System.out.println("Sua chave foi cadastrada:\n");             
+                pegarConta.listaDepix.add(this.cpf);
+                System.out.println("Sua chave foi cadastrada:\n");     
             } else if (escolha == 3) {
                 System.out.println("Digite seu numero de telefone:\n");
-                String chaveTelefone = ler.nextLine();
-                pegarConta.listaDepix.add(chaveTelefone);
+                pegarConta.listaDepix.add(entrada);
+                System.out.println("Sua chave foi cadastrada:\n");     
             } else {
                 PIX gerador = new PIX();
                 gerador.gerarChaveAleatoria(pegarConta);
             }
             ler.close();
+            leitura.close();
         }
-
     }
 }

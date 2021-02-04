@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class ContaPoupanca extends Conta implements Operacoes {
 
-    public ContaPoupanca(String cliente,float saldo, String pix, String codigo, Agencia agencia) {
-        super(cliente, saldo, pix, codigo);
+    public ContaPoupanca(String cliente,float saldo, String codigo, Agencia agencia) {
+        super(cliente, saldo, codigo);
         extrato = new ArrayList<>();
         listaDepix = new ArrayList<>();
     }

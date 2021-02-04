@@ -18,15 +18,13 @@ public class Conta {
 
     public String cliente;
     protected float saldo;
-    public String pix;
     public String codigo;
     public ArrayList<String> extrato;
     public ArrayList<String> listaDepix;
  
 
-    public Conta(String cliente, float saldo, String pix, String codigo) {
+    public Conta(String cliente, float saldo, String codigo) {
         this.saldo = saldo;
-        this.pix = pix;
         this.codigo = codigo;
         this.cliente = cliente;
         extrato = new ArrayList<>();

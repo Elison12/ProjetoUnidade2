@@ -13,8 +13,8 @@ import java.util.ArrayList;
 
 public class ContaCorrente extends Conta implements Operacoes {
 
-    public ContaCorrente(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
-        super(cliente, saldo, pix, codigo);
+    public ContaCorrente(String cliente, float saldo, String codigo, Agencia agencia) {
+        super(cliente, saldo, codigo);
         extrato = new ArrayList<>();
         listaDepix = new ArrayList<>();
     }

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ContaSalario extends Conta {
 
-    public ContaSalario(String cliente, float saldo, String pix, String codigo, Agencia agencia) {
-        super(cliente, saldo, pix, codigo);
+    public ContaSalario(String cliente, float saldo, String codigo, Agencia agencia) {
+        super(cliente, saldo, codigo);
         extrato = new ArrayList<>();
         listaDepix = new ArrayList<>();
     }
