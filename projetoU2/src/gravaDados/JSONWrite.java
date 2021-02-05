@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.json.simple.JSONObject;
 
+
+
 public class JSONWrite {
 
 	@SuppressWarnings("unchecked")
@@ -13,7 +15,11 @@ public class JSONWrite {
 		//Cria um Objeto JSON
 		JSONObject jsonObject = new JSONObject();
 
-		FileWriter writeFile = null;
+        FileWriter writeFile = null;
+        
+
+		//Variaveis que irao armazenar os dados do arquivo JSON
+
 
 		//Armazena dados em um Objeto JSON
 		jsonObject.put("nome", "Allan");
@@ -33,7 +39,6 @@ public class JSONWrite {
 
 		//Imprimne na Tela o Objeto JSON para vizualização
 		System.out.println(jsonObject);
-
 	}
 
 }

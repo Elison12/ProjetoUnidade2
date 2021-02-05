@@ -1,6 +1,5 @@
-/*
-    - Gerencia de tudo é aqui
-*/
+
+
 import bancospacote.Banco;
 import bancospacote.tiposdecontas.Agencia;
 import bancospacote.tiposdecontas.Cliente;
@@ -26,10 +25,10 @@ public class App {
         Cliente gabriel = new Cliente("gabriel", "029.11.234-00");
 
         // adiciona conta
-        elison.addConta("conta corrente","elison", 1000f, "elison@kalil.com", "01.1", pontobanese);
+        elison.addConta("conta corrente","elison", 1000f, "elison@google.com", "01.1", pontobanese);
         gabriel.addConta("conta corrente","gabriel", 1200f, "gabriel@gmail.com", "01.2", pontobanese);
         igor.addConta("conta poupanca","igor", 1200f, "igor@gmail.com", "01.3", pontobanese);
-        ruesley.addConta("outra conta","ruesley", 1300f, "ruesley@xinaider.com", "01.4", pontobanese);
+        ruesley.addConta("outra conta","ruesley", 1300f, "ruesley@google.com", "01.4", pontobanese);
 
         elison.fazerDeposito(400f, igor, pontobanese, "01.3");
 

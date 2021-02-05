@@ -1,12 +1,3 @@
-/*
-- Herança de "conta"
-
-- metados com a marcação @override são sobre escritos de conta, assim quando invocamos algum desse fazemos
-  referencia as esses daqui, não da classe superior
-
-- esses metados podem ser vistos na classe "Cliente"
-
-*/
 package bancospacote.tiposdecontas;
 
 import java.util.ArrayList;

@@ -1,13 +1,4 @@
-/*
-- Essa é a camada final da estrutura, ta marcada como final, assim não podemos criar mais filhas a partir daqui
-- Nela setamos os atributos dos clientes
-- Quando criamos um objeto desse tipo temos tbm o atributo pix que tá laaa na classe "BancoCentral", se pá ta errado
-  mas coloquei pra fazer teste
-- tem um atributo que é Conta, e veja q ele não ta no construtor, assim não aprecisamos dizer qual a conta
- do cliente no momento em que criamos el, só dps
- 
-- Tem aquele de um cliente pode ter mais de uma conta, possivelmente isso se tornará uma array de conta
-*/
+
 package bancospacote.tiposdecontas;
 
 import java.util.ArrayList;
