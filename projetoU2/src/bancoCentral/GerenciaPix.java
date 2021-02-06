@@ -4,5 +4,5 @@ import bancospacote.tiposdecontas.Conta;
 
 public interface GerenciaPix {
     
-    public void gerarChaveAleatoria(Conta conta);
+    public String gerarChaveAleatoria(Conta conta);
 }

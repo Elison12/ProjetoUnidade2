@@ -15,9 +15,10 @@ public class  PIX extends BancoCentral implements GerenciaPix {
 	}  
 
     @Override
-    public void gerarChaveAleatoria(Conta conta) {
+    public String gerarChaveAleatoria(Conta conta) {
         String novaChave = generateString();
         conta.listaDepix.add(novaChave);
+        return novaChave;
     }
 
     private static String generateString() {

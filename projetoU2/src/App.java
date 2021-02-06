@@ -3,19 +3,20 @@
 import bancospacote.Banco;
 import bancospacote.tiposdecontas.Agencia;
 import bancospacote.tiposdecontas.Cliente;
-
+import gravaDados.JSONCreate;
 
 public class App {
     public static void main(String[] args) {
         //cria banco, dizendo nome codigo
+
         Banco banese = new Banco("banese","2");
-        Banco caixa = new Banco("caixa economica", "3");
+        // Banco caixa = new Banco("caixa economica", "3");
 
         //cria agencia, dizendo  nome , codigo e banco pertencente
         Agencia pontobanese = new Agencia("pontobanese", "11.2", banese);
-        Agencia pontobanese2 = new Agencia("pontobanese2","12.2", banese);
+        // Agencia pontobanese2 = new Agencia("pontobanese2","12.2", banese);
 
-        Agencia caixa24h = new Agencia("caixa24h", "33.1", caixa);
+        // Agencia caixa24h = new Agencia("caixa24h", "33.1", caixa);
 
         //cria cliente, dizendo um nome e cpf.
         Cliente elison = new Cliente("Elison", "835.345.23");
@@ -34,11 +35,16 @@ public class App {
 
         ruesley.fazerSaque(30f, "ruesley", pontobanese, "01.4");
 
+
+        // elison.gerarChavePix(pontobanese, "01.1");
+        // elison.gerarChavePix(pontobanese, "01.1");
         elison.fazerTransferencia(450.f, "2", pontobanese, "01.1", gabriel, "01.2", "2", pontobanese);
 
-        elison.gerarChavePix(pontobanese, "01.1");
+        // ruesley.gerarChavePix(pontobanese, "01.4");
 
-        
+        elison.validarChave("01.1", "220f95e4-4e72-482d-a1c5-382cf7b96ccd");
+        // gabriel.gerarChavePix(pontobanese, "01.2");
+        // elison.gerarChavePix(pontobanese, "01.1");
         System.out.println("END");
 
 

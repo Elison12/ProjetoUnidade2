@@ -4,11 +4,11 @@ package bancospacote.tiposdecontas;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
-
+import java.util.Map;
 import bancoCentral.PIX;
+import gravaDados.*;
 
-
-public final class Cliente {
+public final class Cliente implements PIXoperacoes {
     
     public String nome;
     public String cpf;
@@ -169,26 +169,45 @@ public final class Cliente {
                 + "- para ser um numero de telefone digite 3\n" +
                   "- para ser uma chave aleatória digite 4"
             );
-            Scanner ler = new Scanner(System.in); int escolha = ler.nextInt();
-            Scanner leitura = new Scanner(System.in); String entrada = leitura.nextLine();
-
+            Scanner ler = new Scanner(System.in); 
+            int escolha = ler.nextInt();
+            Scanner leitura = new Scanner(System.in);
+            
+            
             if (escolha == 1) {
                 System.out.println("Digite seu email:\n");
+                String entrada = leitura.nextLine();
                 pegarConta.listaDepix.add(entrada);
+                JSONCreate gravar0 = new JSONCreate();
+                gravar0.gravaJSON(numeroDaConta, entrada);
                 System.out.println("Sua chave foi cadastrada:\n");     
             } else if (escolha == 2) {
                 pegarConta.listaDepix.add(this.cpf);
+                JSONCreate gravar1 = new JSONCreate();
+                // gravar1.lerJSON("saida.json");
+                gravar1.gravaJSON(numeroDaConta, cpf);
                 System.out.println("Sua chave foi cadastrada:\n");     
             } else if (escolha == 3) {
                 System.out.println("Digite seu numero de telefone:\n");
+                String entrada = leitura.nextLine();
                 pegarConta.listaDepix.add(entrada);
+                JSONCreate gravar2 = new JSONCreate();
+                gravar2.gravaJSON(numeroDaConta, entrada);
                 System.out.println("Sua chave foi cadastrada:\n");     
             } else {
                 PIX gerador = new PIX();
-                gerador.gerarChaveAleatoria(pegarConta);
+                String chaveGerada = gerador.gerarChaveAleatoria(pegarConta);
+                JSONCreate gravar3 = new JSONCreate();
+                gravar3.gravaJSON(numeroDaConta, chaveGerada);
             }
-            ler.close();
-            leitura.close();
+            // ler.close();
+            // leitura.close();
         }
+    }
+
+    @Override
+    public void validarChave(String conta, String chave) {
+        JSONCreate jc = new JSONCreate();
+        jc.verificar(chave);
     }
 }
