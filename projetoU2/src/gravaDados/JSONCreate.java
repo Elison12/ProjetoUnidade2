@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
+import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -57,18 +57,22 @@ public class JSONCreate {
         }
     }
 
-    public void verificar(String chave) {
+    // Verifica se A chave já existe na json, se já existe retorna true
+    public boolean validacao(String chave) {
         JSONArray leitura = lerJSON("saida.json");
+        ArrayList<String> listadechave = new ArrayList<String>();
+        CharSequence sochave = null;
+
         for (int i = 0; i < leitura.size(); i++) {
-            Object lido = leitura.get(i);
-            String nova = lido.toString();
-            // System.out.println(nova.subSequence(8, nova.length()-1));
-            CharSequence sochave = nova.subSequence(8, nova.length()-1);
-            if (chave.equals(sochave)) {
-                System.out.println("sim");
-            } else {
-                System.out.println("não");
-            }
+            String converte =  String.valueOf(leitura.get(i));
+            sochave = (String) converte.subSequence(9, converte.length() - 2);
+            String novissima = String.valueOf(sochave);
+            listadechave.add(novissima);
         }
+
+        if (listadechave.contains(chave)) {
+            return true;
+        }
+        return false;
     }
 }
