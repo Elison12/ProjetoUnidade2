@@ -177,37 +177,54 @@ public final class Cliente implements PIXoperacoes {
             if (escolha == 1) {
                 System.out.println("Digite seu email:\n");
                 String entrada = leitura.nextLine();
-                pegarConta.listaDepix.add(entrada);
-                JSONCreate gravar0 = new JSONCreate();
-                gravar0.gravaJSON(numeroDaConta, entrada);
-                System.out.println("Sua chave foi cadastrada:\n");     
+                if (validarChave(numeroDaConta, entrada) == true) {
+                    System.out.println("Essa chave já existe, escolha outra");
+                } else {
+                    pegarConta.listaDepix.add(entrada);
+                    JSONCreate gravar0 = new JSONCreate();
+                    gravar0.gravaJSON(numeroDaConta, entrada);
+                    System.out.println("Sua chave foi cadastrada:\n"); 
+                }
+                  
             } else if (escolha == 2) {
-                pegarConta.listaDepix.add(this.cpf);
-                JSONCreate gravar1 = new JSONCreate();
-                // gravar1.lerJSON("saida.json");
-                gravar1.gravaJSON(numeroDaConta, cpf);
-                System.out.println("Sua chave foi cadastrada:\n");     
+                if (validarChave(numeroDaConta, cpf) == true) {
+                    System.out.println("Essa chave já existe, escolha outra");
+                } else {
+                    pegarConta.listaDepix.add(cpf);
+                    JSONCreate gravar1 = new JSONCreate();
+                    gravar1.gravaJSON(numeroDaConta, cpf);
+                    System.out.println("Sua chave foi cadastrada:\n"); 
+                }
+
             } else if (escolha == 3) {
                 System.out.println("Digite seu numero de telefone:\n");
                 String entrada = leitura.nextLine();
-                pegarConta.listaDepix.add(entrada);
-                JSONCreate gravar2 = new JSONCreate();
-                gravar2.gravaJSON(numeroDaConta, entrada);
-                System.out.println("Sua chave foi cadastrada:\n");     
+                if (validarChave(numeroDaConta, entrada) == true) {
+                    System.out.println("Essa chave já existe, escolha outra");
+                } else {
+                    pegarConta.listaDepix.add(entrada);
+                    JSONCreate gravar2 = new JSONCreate();
+                    gravar2.gravaJSON(numeroDaConta, entrada);
+                    System.out.println("Sua chave foi cadastrada:\n"); 
+                }
+
             } else {
                 PIX gerador = new PIX();
                 String chaveGerada = gerador.gerarChaveAleatoria(pegarConta);
                 JSONCreate gravar3 = new JSONCreate();
                 gravar3.gravaJSON(numeroDaConta, chaveGerada);
             }
-            // ler.close();
-            // leitura.close();
         }
     }
 
     @Override
-    public void validarChave(String conta, String chave) {
+    public boolean validarChave(String conta, String chave) {
         JSONCreate jc = new JSONCreate();
-        jc.verificar(chave);
+        // System.out.println(jc.validacao(chave));
+        boolean confere = jc.validacao(chave);
+        if (confere == true) {
+            return true;
+        } 
+        return false;
     }
 }
