@@ -46,7 +46,8 @@ public class TelaAgenciaMDI extends javax.swing.JFrame {
         menuSaque = new javax.swing.JMenuItem();
         menuDeposito = new javax.swing.JMenuItem();
         menuTransferencia = new javax.swing.JMenuItem();
-        menuSobre = new javax.swing.JMenu();
+        menuPIX = new javax.swing.JMenu();
+        menuChavesPIX = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Banco Central");
@@ -194,8 +195,17 @@ public class TelaAgenciaMDI extends javax.swing.JFrame {
 
         jMenuBar1.add(menuCliente);
 
-        menuSobre.setText("Sobre");
-        jMenuBar1.add(menuSobre);
+        menuPIX.setText("PIX");
+
+        menuChavesPIX.setText("Chaves PIX");
+        menuChavesPIX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuChavesPIXActionPerformed(evt);
+            }
+        });
+        menuPIX.add(menuChavesPIX);
+
+        jMenuBar1.add(menuPIX);
 
         setJMenuBar(jMenuBar1);
 
@@ -268,6 +278,13 @@ public class TelaAgenciaMDI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeBancoActionPerformed
 
+    private void menuChavesPIXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuChavesPIXActionPerformed
+        // TODO add your handling code here:
+        TelaPIX telaPIX = new TelaPIX();
+        jDesktopPane1.add(telaPIX);
+        telaPIX.setVisible(true);
+    }//GEN-LAST:event_menuChavesPIXActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -315,12 +332,13 @@ public class TelaAgenciaMDI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuAddConta;
     private javax.swing.JMenu menuAgencia;
     private javax.swing.JMenu menuBanco;
+    private javax.swing.JMenuItem menuChavesPIX;
     private javax.swing.JMenu menuCliente;
     private javax.swing.JMenuItem menuCriarAgencia;
     private javax.swing.JMenuItem menuDeposito;
+    private javax.swing.JMenu menuPIX;
     private javax.swing.JMenuItem menuSair;
     private javax.swing.JMenuItem menuSaque;
-    private javax.swing.JMenu menuSobre;
     private javax.swing.JMenuItem menuTransferencia;
     private javax.swing.JTextField txtCodBanco;
     private javax.swing.JTextField txtNomeBanco;
